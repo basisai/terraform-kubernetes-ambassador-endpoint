@@ -30,12 +30,6 @@ resource "kubernetes_manifest" "host" {
   }
 }
 
-locals {
-  mapping_settings = {
-
-  }
-}
-
 resource "kubernetes_manifest" "mapping" {
   provider = kubernetes-alpha
 
