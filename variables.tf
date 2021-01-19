@@ -1,6 +1,5 @@
 variable "name" {
   description = "Base name of CRD resources"
-  default     = "ambassador"
 }
 
 variable "namespace" {

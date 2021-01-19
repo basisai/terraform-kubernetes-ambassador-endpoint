@@ -33,7 +33,7 @@ If your service serves multiple hosts, create multiple instances of this module 
 | mapping\_annotations | Annotations for mapping | `map` | `{}` | no |
 | mapping\_labels | Labels for mapping | `map` | <pre>{<br>  "app.kubernetes.io/managed-by": "Terraform"<br>}</pre> | no |
 | mapping\_spec | Additional specifications for mapping, like resolver | `map` | `{}` | no |
-| name | Base name of CRD resources | `string` | `"ambassador"` | no |
+| name | Base name of CRD resources | `any` | n/a | yes |
 | namespace | Namespace to create resources in | `string` | `"default"` | no |
 | prefix | Path prefix for the mapping | `string` | `"/"` | no |
 | service | Name of the service to map the host to, using the specified resolver | `string` | n/a | yes |
