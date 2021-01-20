@@ -25,7 +25,7 @@ resource "kubernetes_manifest" "host" {
         tlsSecret = {
           name = var.tls_secret_name
         }
-      } : tomap()
+      } : tomap({})
     )
   }
 }
@@ -53,7 +53,7 @@ resource "kubernetes_manifest" "mapping" {
       },
       var.tls_origination_enable ? {
         tls = var.name
-      } : {},
+      } : tomap({}),
       var.mapping_spec,
     )
   }
