@@ -9,7 +9,7 @@ variable "namespace" {
 
 variable "ambassador_id" {
   description = "Ambassador ID to create CRDs for"
-  default     = "default"
+  default     = ["default"]
 }
 
 variable "hostname" {
