@@ -72,7 +72,7 @@ variable "insecure_request_policy" {
   description = "Request policy of insecure requests"
   default = {
     action         = "Redirect"
-    additionalPort = "8080"
+    additionalPort = 8080
   }
 }
 
