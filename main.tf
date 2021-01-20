@@ -25,7 +25,7 @@ resource "kubernetes_manifest" "host" {
         tlsSecret = {
           name = var.tls_secret_name
         }
-      } : {}
+      } : tomap({})
     )
   }
 }
@@ -53,7 +53,7 @@ resource "kubernetes_manifest" "mapping" {
       },
       var.tls_origination_enable ? {
         tls = var.name
-      } : {},
+      } : tomap({}),
       var.mapping_spec,
     )
   }
@@ -61,6 +61,7 @@ resource "kubernetes_manifest" "mapping" {
 
 resource "kubernetes_manifest" "tls_origination" {
   provider = kubernetes-alpha
+  count    = var.tls_origination_enable ? 1 : 0
 
   manifest = {
     apiVersion = "getambassador.io/v2"

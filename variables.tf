@@ -9,7 +9,7 @@ variable "namespace" {
 
 variable "ambassador_id" {
   description = "Ambassador ID to create CRDs for"
-  default     = "default"
+  default     = ["default"]
 }
 
 variable "hostname" {
@@ -72,7 +72,7 @@ variable "insecure_request_policy" {
   description = "Request policy of insecure requests"
   default = {
     action         = "Redirect"
-    additionalPort = "8080"
+    additionalPort = 8080
   }
 }
 
