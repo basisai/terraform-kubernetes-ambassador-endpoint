@@ -77,7 +77,7 @@ resource "kubernetes_manifest" "tlscontext" {
     spec = merge(
       {
         ambassador_id = var.ambassador_id
-        secret = var.tls_secret_name
+        secret        = var.tls_secret_name
       },
       var.tlscontext_spec,
     )
