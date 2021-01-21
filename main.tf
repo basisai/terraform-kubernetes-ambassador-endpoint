@@ -22,8 +22,8 @@ resource "kubernetes_manifest" "host" {
         requestPolicy = {
           insecure = var.insecure_request_policy
         }
-        tlsSecret = {
-          name = var.tls_secret_name
+        tlsContext = {
+          name = kubernetes_manifest.tlscontext[0].manifest.metadata.name
         }
       } : tomap({})
     )
@@ -55,6 +55,31 @@ resource "kubernetes_manifest" "mapping" {
         tls = var.name
       } : tomap({}),
       var.mapping_spec,
+    )
+  }
+}
+
+resource "kubernetes_manifest" "tlscontext" {
+  provider = kubernetes-alpha
+  count    = var.tls_enabled ? 1 : 0
+
+  manifest = {
+    apiVersion = "getambassador.io/v2"
+    kind       = "TLSContext"
+
+    metadata = {
+      name        = var.name
+      namespace   = var.namespace
+      annotations = var.tlscontext_annotations
+      labels      = var.tlscontext_labels
+    }
+
+    spec = merge(
+      {
+        ambassador_id = var.ambassador_id
+        secret        = var.tls_secret_name
+      },
+      var.tlscontext_spec,
     )
   }
 }
