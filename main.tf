@@ -78,6 +78,7 @@ resource "kubernetes_manifest" "tlscontext" {
       {
         ambassador_id = var.ambassador_id
         secret        = var.tls_secret_name
+        hosts         = [var.hostname]
       },
       var.tlscontext_spec,
     )
