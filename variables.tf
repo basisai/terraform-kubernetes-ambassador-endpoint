@@ -76,6 +76,23 @@ variable "insecure_request_policy" {
   }
 }
 
+variable "tlscontext_annotations" {
+  description = "Annotations for tlscontext"
+  default     = {}
+}
+
+variable "tlscontext_labels" {
+  description = "Labels for tlscontext"
+  default = {
+    "app.kubernetes.io/managed-by" = "Terraform"
+  }
+}
+
+variable "tlscontext_spec" {
+  description = "Additional specifications for TLSContext"
+  default     = {}
+}
+
 #########################
 # Mapping Settings
 #########################

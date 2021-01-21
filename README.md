@@ -2,8 +2,8 @@
 
 Create the necessary CRDs to serve a service via Ambassador using Terraform.
 
-Each "instance" of this module will create a single `Host`, `Mapping` and an optional `TLSContext`
-for `Mapping` TLS origination. This greatly simplifies the module.
+Each "instance" of this module will create a single `Host`, `Mapping`, optional `TLSContext`
+and an optional `TLSContext` for `Mapping` TLS origination. This greatly simplifies the module.
 
 If your service serves multiple hosts, create multiple instances of this module with `for_each`.
 
@@ -25,11 +25,11 @@ If your service serves multiple hosts, create multiple instances of this module 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | acme\_provider | ACME Provider configuration if TLS is enabled | `map` | <pre>{<br>  "authority": "None"<br>}</pre> | no |
-| ambassador\_id | Ambassador ID to create CRDs for | `string` | `"default"` | no |
+| ambassador\_id | Ambassador ID to create CRDs for | `list` | <pre>[<br>  "default"<br>]</pre> | no |
 | host\_annotations | Annotations for host | `map` | `{}` | no |
 | host\_labels | Labels for host | `map` | <pre>{<br>  "app.kubernetes.io/managed-by": "Terraform"<br>}</pre> | no |
 | hostname | Hostname for the endpoint | `any` | n/a | yes |
-| insecure\_request\_policy | Request policy of insecure requests | `map` | <pre>{<br>  "action": "Redirect",<br>  "additionalPort": "8080"<br>}</pre> | no |
+| insecure\_request\_policy | Request policy of insecure requests | `map` | <pre>{<br>  "action": "Redirect",<br>  "additionalPort": 8080<br>}</pre> | no |
 | mapping\_annotations | Annotations for mapping | `map` | `{}` | no |
 | mapping\_labels | Labels for mapping | `map` | <pre>{<br>  "app.kubernetes.io/managed-by": "Terraform"<br>}</pre> | no |
 | mapping\_spec | Additional specifications for mapping, like resolver | `map` | `{}` | no |
@@ -45,6 +45,9 @@ If your service serves multiple hosts, create multiple instances of this module 
 | tls\_origination\_spec | Additional spec for the TLSContext used in TLS origination | `map` | `{}` | no |
 | tls\_secret\_name | TLS Secret name | `any` | `null` | no |
 | tls\_settings | TLS Settings. See https://www.getambassador.io/docs/latest/topics/running/tls/#specify-tls-configuration-in-the-host for the list of fields | `map` | <pre>{<br>  "alpn_protocols": "h2, http/1.1",<br>  "min_tls_version": "v1.2"<br>}</pre> | no |
+| tlscontext\_annotations | Annotations for tlscontext | `map` | `{}` | no |
+| tlscontext\_labels | Labels for tlscontext | `map` | <pre>{<br>  "app.kubernetes.io/managed-by": "Terraform"<br>}</pre> | no |
+| tlscontext\_spec | Additional specifications for TLSContext | `map` | `{}` | no |
 
 ## Outputs
 
