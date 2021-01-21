@@ -60,14 +60,6 @@ variable "tls_secret_name" {
   default     = null
 }
 
-variable "tls_settings" {
-  description = "TLS Settings. See https://www.getambassador.io/docs/latest/topics/running/tls/#specify-tls-configuration-in-the-host for the list of fields"
-  default = {
-    min_tls_version = "v1.2"
-    alpn_protocols  = "h2, http/1.1"
-  }
-}
-
 variable "insecure_request_policy" {
   description = "Request policy of insecure requests"
   default = {
@@ -90,7 +82,10 @@ variable "tlscontext_labels" {
 
 variable "tlscontext_spec" {
   description = "Additional specifications for TLSContext"
-  default     = {}
+  default = {
+    min_tls_version = "v1.2"
+    alpn_protocols  = "h2, http/1.1"
+  }
 }
 
 #########################

@@ -44,10 +44,9 @@ If your service serves multiple hosts, create multiple instances of this module 
 | tls\_origination\_labels | Labels for TLSContext for TLS origination | `map` | <pre>{<br>  "app.kubernetes.io/managed-by": "Terraform"<br>}</pre> | no |
 | tls\_origination\_spec | Additional spec for the TLSContext used in TLS origination | `map` | `{}` | no |
 | tls\_secret\_name | TLS Secret name | `any` | `null` | no |
-| tls\_settings | TLS Settings. See https://www.getambassador.io/docs/latest/topics/running/tls/#specify-tls-configuration-in-the-host for the list of fields | `map` | <pre>{<br>  "alpn_protocols": "h2, http/1.1",<br>  "min_tls_version": "v1.2"<br>}</pre> | no |
 | tlscontext\_annotations | Annotations for tlscontext | `map` | `{}` | no |
 | tlscontext\_labels | Labels for tlscontext | `map` | <pre>{<br>  "app.kubernetes.io/managed-by": "Terraform"<br>}</pre> | no |
-| tlscontext\_spec | Additional specifications for TLSContext | `map` | `{}` | no |
+| tlscontext\_spec | Additional specifications for TLSContext | `map` | <pre>{<br>  "alpn_protocols": "h2, http/1.1",<br>  "min_tls_version": "v1.2"<br>}</pre> | no |
 
 ## Outputs
 
