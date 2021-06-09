@@ -25,7 +25,8 @@ resource "kubernetes_manifest" "host" {
         tlsContext = {
           name = kubernetes_manifest.tlscontext[0].manifest.metadata.name
         }
-      } : tomap({})
+      } : tomap({}),
+      var.host_spec
     )
   }
 }
