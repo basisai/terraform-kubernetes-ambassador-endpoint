@@ -26,7 +26,7 @@ resource "kubernetes_manifest" "host" {
           name = kubernetes_manifest.tlscontext[0].manifest.metadata.name
         }
       } : tomap({}),
-      var.host_spec
+      var.host_spec,
     )
   }
 }
