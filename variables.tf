@@ -28,6 +28,11 @@ variable "host_labels" {
   }
 }
 
+variable "host_spec" {
+  description = "Additional specifications for host"
+  default     = {}
+}
+
 variable "mapping_annotations" {
   description = "Annotations for mapping"
   default     = {}
