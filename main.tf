@@ -95,7 +95,7 @@ resource "kubernetes_manifest" "tls_origination" {
     kind       = "TLSContext"
 
     metadata = {
-      name        = var.name
+      name        = coalesce(var.tls_origination_name, "${var.name}-orig")
       namespace   = var.namespace
       annotations = var.tls_origination_annotations
       labels      = var.tls_origination_labels
