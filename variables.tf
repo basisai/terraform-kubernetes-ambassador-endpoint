@@ -119,6 +119,12 @@ variable "tls_origination_enable" {
   default     = false
 }
 
+variable "tls_origination_name" {
+  description = "Name of the TLSContext created for TLS Origination. Defaults to var.name suffixed with -orig"
+  type        = string
+  default     = ""
+}
+
 variable "tls_original_secret" {
   description = "Name of the secret for TLS origination"
   default     = ""
