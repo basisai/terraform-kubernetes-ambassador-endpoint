@@ -53,7 +53,7 @@ resource "kubernetes_manifest" "mapping" {
         prefix        = var.prefix
       },
       var.tls_origination_enable ? {
-        tls = var.name
+        tls = coalesce(var.tls_origination_name, "${var.name}-orig")
       } : tomap({}),
       var.mapping_spec,
     )
