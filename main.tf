@@ -1,6 +1,4 @@
 resource "kubernetes_manifest" "host" {
-  provider = kubernetes-alpha
-
   manifest = {
     apiVersion = "getambassador.io/v2"
     kind       = "Host"
@@ -32,8 +30,6 @@ resource "kubernetes_manifest" "host" {
 }
 
 resource "kubernetes_manifest" "mapping" {
-  provider = kubernetes-alpha
-
   manifest = {
     apiVersion = "getambassador.io/v2"
     kind       = "Mapping"
@@ -61,8 +57,7 @@ resource "kubernetes_manifest" "mapping" {
 }
 
 resource "kubernetes_manifest" "tlscontext" {
-  provider = kubernetes-alpha
-  count    = var.tls_enabled ? 1 : 0
+ count    = var.tls_enabled ? 1 : 0
 
   manifest = {
     apiVersion = "getambassador.io/v2"
@@ -87,8 +82,7 @@ resource "kubernetes_manifest" "tlscontext" {
 }
 
 resource "kubernetes_manifest" "tls_origination" {
-  provider = kubernetes-alpha
-  count    = var.tls_origination_enable ? 1 : 0
+ count    = var.tls_origination_enable ? 1 : 0
 
   manifest = {
     apiVersion = "getambassador.io/v2"
