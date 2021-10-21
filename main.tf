@@ -57,7 +57,7 @@ resource "kubernetes_manifest" "mapping" {
 }
 
 resource "kubernetes_manifest" "tlscontext" {
- count    = var.tls_enabled ? 1 : 0
+  count = var.tls_enabled ? 1 : 0
 
   manifest = {
     apiVersion = "getambassador.io/v2"
@@ -82,7 +82,7 @@ resource "kubernetes_manifest" "tlscontext" {
 }
 
 resource "kubernetes_manifest" "tls_origination" {
- count    = var.tls_origination_enable ? 1 : 0
+  count = var.tls_origination_enable ? 1 : 0
 
   manifest = {
     apiVersion = "getambassador.io/v2"
