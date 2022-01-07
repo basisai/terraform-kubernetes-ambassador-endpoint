@@ -23,9 +23,16 @@ resource "kubernetes_manifest" "host" {
         tlsContext = {
           name = kubernetes_manifest.tlscontext[0].manifest.metadata.name
         }
+        tlsSecret = {
+          name = var.tls_secret_name
+        }
       } : tomap({}),
       var.host_spec,
     )
+  }
+
+  field_manager {
+    force_conflicts = true
   }
 }
 
@@ -54,6 +61,10 @@ resource "kubernetes_manifest" "mapping" {
       var.mapping_spec,
     )
   }
+
+  field_manager {
+    force_conflicts = true
+  }
 }
 
 resource "kubernetes_manifest" "tlscontext" {
@@ -79,6 +90,10 @@ resource "kubernetes_manifest" "tlscontext" {
       var.tlscontext_spec,
     )
   }
+
+  field_manager {
+    force_conflicts = true
+  }
 }
 
 resource "kubernetes_manifest" "tls_origination" {
@@ -102,5 +117,9 @@ resource "kubernetes_manifest" "tls_origination" {
       },
       var.tls_origination_spec,
     )
+  }
+
+  field_manager {
+    force_conflicts = true
   }
 }
